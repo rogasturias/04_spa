@@ -85,14 +85,7 @@ export class HeroesService {
         return this.heroesData[i];
     }
     buscarHeroe(name: string): Iheroe[]{
-    this.heroesSearch = [];
-    for ( const heroe of this.heroesData){
-      if ( heroe.nombre.toLowerCase().indexOf(name.toLowerCase()) !== -1){
-      this.heroesSearch.push(heroe);
-      }
-    }
-    return this.heroesSearch;
-
+    return this.heroesSearch = this.heroesData.filter(heroe => heroe.nombre.toLowerCase().indexOf(name.toLowerCase()) !== -1);
     }
 
 }

@@ -19,15 +19,10 @@ export class HeroeSearchComponent implements OnInit {
   ngOnInit(): void {
   this.heroeSearch = this.heroesService.getHeroes();
   this.activatedRoute.params.subscribe( params => {
-  console.log(params.buscarTexto);
   this.heroeSearch = this.heroesService.buscarHeroe(params.buscarTexto);
-
   });
   }
 
-  verHeroe(i: number) {
-  this.router.navigate(['/heroe/' + i]);
-  }
   buscarHeroe(name: string){
     this.router.navigate(['/heroe-search/' + name]);
   }
