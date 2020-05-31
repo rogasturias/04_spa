@@ -1,17 +1,22 @@
 <h1>Buscar Heroes <small>y antiheroes , de todo un poco</small></h1>
 
-<div class="card-columns">
+<div class="card-columns" animated fadeIn fast *ngFor="let heroe of heroeSearch; let i=index">
 
-    <div class="card" animated fadeIn fast *ngFor="let heroe of heroeSearch; let i=index">
-        <img class="card-img-top" [src]="heroe.img" [alt]="heroe.nombre">
-        <div class="card-body">
-            <h5 class="card-title"> <strong>{{i+1}}</strong> {{heroe.nombre}}</h5>
-            <p class="card-text">{{heroe.bio}}</p>
-            <p class="card-text"><small class="text-muted">{{heroe.aparicion}}</small></p>
 
-            <button class="btn-outline-primary btn-block" (click)="buscarHeroe(heroe.nombre)">Ver más ... (boton)</button>
-
-            <a [routerLink]="['/heroe-search',heroe.nombre]" class="btn btn-outline-primary"> Ver más ...(link) </a>
-
+    <h1 class="fadeIn fast"> {{heroe.nombre| uppercase }} ({{heroe.aparicion| date:'y'}})</h1>
+    <img *ngIf="heroe.casa=='DC'" class='img-fluid img-thumbnail' width="100px" height="auto" src="assets/img/dc.png" [alt]="heroe.casa">
+    <img *ngIf="heroe.casa=='Marvel'" class='img-fluid img-thumbnail' width="100px" height="auto" src="assets/img/marvel.png" [alt]="heroe.casa">
+    <div class="row fadeIn fast">
+        <div class="col-md-12">
+            <div class="card" animated fadeIn fast>
+                <img class="img-fluid" [src]="heroe.img" [alt]="heroe.nombre">
+                <div class="card-body">
+                    <h5 class="card-title"> {{heroe.nombre}}</h5>
+                    <p class="card-text">{{heroe.bio}}</p>
+                    <p class="card-text"><small class="text-muted">{{heroe.aparicion| date:'dd-MMMM-yyyy'}}</small></p>
+                </div>
+                <a [routerLink]="['/heroes']" class="btn btn-outline-danger btn-block"> Volver Heroes... </a>
+            </div>
         </div>
     </div>
+</div>
