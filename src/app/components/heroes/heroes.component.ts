@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {HeroesService, Iheroe} from './../../servicios/heroes.service';
-//import { Iheroe } from '../../servicios/heroes.service';
 import { Router } from '@angular/router';
 
 
@@ -21,7 +20,7 @@ export class HeroesComponent implements OnInit {
   }
 
   verHeroe(i: number) {
-  this.router.navigate(['/heroe/i']);
+  this.router.navigate(['/heroe/' + i]);
   }
 
 }
