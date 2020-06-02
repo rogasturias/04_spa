@@ -1,22 +1,17 @@
 <h1>Buscar Heroes <small>y antiheroes , de todo un poco</small></h1>
+<div class="row animated fadeIn" *ngIf="(heroeSearch.length ==0)">
+    <div class="col-md-12">
 
-<div class="card-columns" animated fadeIn fast *ngFor="let heroe of heroeSearch; let i=index">
-
-
-    <h1 class="fadeIn fast"> {{heroe.nombre| uppercase }} ({{heroe.aparicion| date:'y'}})</h1>
-    <img *ngIf="heroe.casa=='DC'" class='img-fluid img-thumbnail' width="100px" height="auto" src="assets/img/dc.png" [alt]="heroe.casa">
-    <img *ngIf="heroe.casa=='Marvel'" class='img-fluid img-thumbnail' width="100px" height="auto" src="assets/img/marvel.png" [alt]="heroe.casa">
-    <div class="row fadeIn fast">
-        <div class="col-md-12">
-            <div class="card" animated fadeIn fast>
-                <img class="img-fluid" [src]="heroe.img" [alt]="heroe.nombre">
-                <div class="card-body">
-                    <h5 class="card-title"> {{heroe.nombre}}</h5>
-                    <p class="card-text">{{heroe.bio}}</p>
-                    <p class="card-text"><small class="text-muted">{{heroe.aparicion| date:'dd-MMMM-yyyy'}}</small></p>
-                </div>
-                <a [routerLink]="['/heroes']" class="btn btn-outline-danger btn-block"> Volver Heroes... </a>
-            </div>
+        <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>No hay datos</strong> no se han encontrado resultados para: ..
+            <h3>{{busqueda}}</h3>
         </div>
+
     </div>
+</div>
+<div class="card-columns">
+
+    <app-heroe-ficha (heroeSeleccionado)="verHeroe($event)" [heroe]="hero" [index]=i *ngFor="let hero of heroeSearch; let i=index"></app-heroe-ficha>
+
 </div>
